@@ -1,0 +1,43 @@
+name = "2b3/vide_sonner"
+version = "0.1.0"
+description = "An opinionated toast component for Vide."
+authors = ["2b3"]
+repository = "https://github.com/2b3/vide-sonner"
+license = "MIT"
+
+[target]
+environment = "roblox"
+
+[indices]
+default = "https://github.com/pesde-pkg/index"
+
+[wally_indices]
+default = "https://github.com/UpliftGames/wally-index"
+
+[scripts]
+roblox_sync_config_generator = ".pesde/scripts/roblox_sync_config_generator.luau"
+sourcemap_generator = ".pesde/scripts/sourcemap_generator.luau"
+
+dev = "scripts/dev"
+
+[dev_dependencies]
+scripts = { name = "pesde/scripts_rojo", version = "^0.2.0", target = "lune" }
+
+[dependencies]
+Bootstrapper = { wally = "ldgerrits/bootstrapper", version = "^1.2.2"}
+
+Promise = { wally = "maximumadhd/promise-typed", version = "^1.0.0" }
+
+VideCharm = { wally = "littensy/vide-charm", version = "^0.4.0"}
+Reflex = { wally = "littensy/reflex", version = "^4.3.1"}
+Charm = { wally = "littensy/charm", version = "^0.11.0"}
+
+Vide = { version = "^0.4.1", wally = "centau/vide" }
+
+Lucide = { wally = "latte-soft/lucide-icons", version = "^0.1.3" }
+Ripple = { wally = "littensy/vide-ripple", version = "^0.10.2" }
+UILabs = { wally = "pepeeltoro41/ui-labs", version = "^2.4.2"}
+
+[engines]
+pesde = "^0.7.0"
+lune = "^0.10.2"

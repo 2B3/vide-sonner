@@ -1,0 +1,105 @@
+{
+  "globIgnorePaths": [
+    "**/package.json",
+    "**/tsconfig.json"
+  ],
+  "name": "roblox-project",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "Packages": {
+        "$path": "roblox_packages"
+      },
+      "shared": {
+        "$className": "Folder",
+        "Core": {
+          "$className": "Folder",
+          "UI": {
+            "$className": "Folder",
+            "App": {
+              "$path": "src/Core/UI/App.luau"
+            },
+            "Hooks": {
+              "$className": "Folder",
+              "useCharacter": {
+                "$path": "src/Core/UI/Hooks/useCharacter.luau"
+              },
+              "useEventListener": {
+                "$path": "src/Core/UI/Hooks/useEventListener.luau"
+              },
+              "usePreferredInput": {
+                "$path": "src/Core/UI/Hooks/usePreferredInput.luau"
+              }
+            }
+          }
+        },
+        "Features": {
+          "$className": "Folder",
+          "Toast": {
+            "$className": "Folder",
+            "Store": {
+              "$path": "src/Features/Toast/Store.luau"
+            },
+            "Types": {
+              "$path": "src/Features/Toast/Types.luau"
+            },
+            "UI": {
+              "$className": "Folder",
+              "Components": {
+                "$className": "Folder",
+                "Toast": {
+                  "$path": "src/Features/Toast/UI/Components/Toast.luau"
+                },
+                "Toaster": {
+                  "$path": "src/Features/Toast/UI/Components/Toaster.luau"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ServerScriptService": {
+      "server": {
+        "$className": "Folder",
+        "Startup": {
+          "$className": "Folder",
+          "Server": {
+            "$path": "src/Startup/Server.server.luau"
+          }
+        }
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "client": {
+          "$className": "Folder",
+          "Core": {
+            "$className": "Folder",
+            "UI": {
+              "$className": "Folder",
+              "UIController": {
+                "$path": "src/Core/UI/client/UIController.luau"
+              }
+            }
+          },
+          "Features": {
+            "$className": "Folder",
+            "Toast": {
+              "$className": "Folder",
+              "SonnerController": {
+                "$path": "src/Features/Toast/Client/SonnerController.luau"
+              }
+            }
+          },
+          "Startup": {
+            "$className": "Folder",
+            "Client": {
+              "$path": "src/Startup/Client.client.luau"
+            }
+          }
+        }
+      }
+    }
+  }
+}
