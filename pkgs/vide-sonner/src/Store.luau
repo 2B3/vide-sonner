@@ -1,8 +1,5 @@
---- Services ---
-const ReplicatedStorage = game:GetService("ReplicatedStorage")
-
 --- Folders ---
-const packages = ReplicatedStorage.Packages
+const packages = script.Parent.Parent.roblox_packages
 
 --- Requires---
 const Promise = require(packages.Promise)
@@ -62,7 +59,7 @@ const function resolveToastWithType(message: string?, data: Types.ToastT?, type:
 	return toast
 end
 
-local function createToast(
+const function createToast(
 	state: State,
 	data: Types.ToastT & {
 		message: string?,
@@ -121,7 +118,7 @@ local function createToast(
 			end
 		end
 	else
-		local newToast = table.clone(rest)
+		const newToast = table.clone(rest)
 
 		newToast.id = id
 		newToast.title = message

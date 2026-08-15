@@ -1,14 +1,11 @@
---- Services ---
-const ReplicatedStorage = game:GetService("ReplicatedStorage")
-
 --- Folders ---
-const features = ReplicatedStorage.shared.Features
-const packages = ReplicatedStorage.Packages
+const features = script.Parent.Parent.Parent
+const packages = script.Parent.Parent.Parent.Parent.roblox_packages
 
 --- Requires ---
 const Ripple = require(packages.Ripple)
-const Types = require(features.Toast.Types)
-const Assets = require(features.Toast.Assets)
+const Types = require(features.Types)
+const Assets = require(features.Assets)
 const Vide = require(packages.Vide)
 
 --- Variables ---
@@ -60,7 +57,7 @@ end
 --- Component ---
 const function Toast(props: Types.ToastProps)
 	const function onAbsSizeChanged(newSize: Vector2)
-		local height = newSize.Y
+		const height = newSize.Y
 
 		if height <= 0 then
 			return

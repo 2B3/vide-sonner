@@ -1,0 +1,27 @@
+name = "2b3/vide_sonner_test_place"
+version = "0.1.0"
+description = "Test place for anopinionated toast component for Vide."
+authors = ["2b3"]
+repository = "https://github.com/2b3/vide-sonner"
+license = "MIT"
+
+[target]
+environment = "roblox"
+
+[indices]
+default = "https://github.com/pesde-pkg/index"
+
+[wally_indices]
+default = "https://github.com/UpliftGames/wally-index"
+
+[scripts]
+dev = "scripts/dev"
+
+[dependencies]
+Bootstrapper = { wally = "ldgerrits/bootstrapper", version = "^1.2.2"}
+Sonner = { workspace = "2b3/vide_sonner", version = "^0.1.3" }
+Vide = { version = "^0.4.1", wally = "centau/vide" }
+
+[engines]
+pesde = "^0.7.0"
+lune = "^0.10.2"

@@ -32,12 +32,6 @@
               }
             }
           }
-        },
-        "Features": {
-          "$className": "Folder",
-          "Toast": {
-            "$path": "src/Features/Toast/Shared"
-          }
         }
       }
     },
@@ -69,8 +63,8 @@
             "$className": "Folder",
             "Toast": {
               "$className": "Folder",
-              "SonnerController": {
-                "$path": "src/Features/Toast/Client/SonnerController.luau"
+              "ToastController": {
+                "$path": "src/Features/Toast/Client/ToastController.luau"
               }
             }
           },

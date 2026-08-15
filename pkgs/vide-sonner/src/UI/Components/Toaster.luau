@@ -1,14 +1,11 @@
---- Services ---
-const ReplicatedStorage = game:GetService("ReplicatedStorage")
-
 --- Folders ---
-const features = ReplicatedStorage.shared.Features
-const packages = ReplicatedStorage.Packages
+const features = script.Parent.Parent.Parent
+const packages = script.Parent.Parent.Parent.Parent.roblox_packages
 
 --- Requires ---
 const Toast = require(script.Parent.Toast)
-const Store = require(features.Toast.Store)
-const Types = require(features.Toast.Types)
+const Store = require(features.Store)
+const Types = require(features.Types)
 const Vide = require(packages.Vide)
 
 --- Variables ---

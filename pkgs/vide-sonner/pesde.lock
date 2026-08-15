@@ -2,14 +2,8 @@
 # It is not intended for manual editing.
 format = 2
 name = "2b3/vide_sonner"
-version = "0.1.0"
+version = "0.1.7"
 target = "roblox"
-
-[workspace."2b3/vide_sonner"]
-roblox = "pkgs/vide-sonner"
-
-[workspace."2b3/vide_sonner_test_place"]
-roblox = "pkgs/vide-sonner-test-place"
 
 [graph."0x5eal/unzip@0.2.1 luau".pkg_ref]
 ref_ty = "pesde"
@@ -131,3 +125,59 @@ option = [{ name = "lukadev_0/option", version = "^1.2.1", index = "https://gith
 pathfs = [{ name = "jiwonz/pathfs", version = "^0.6.0", index = "https://github.com/pesde-pkg/index" }, "standard"]
 result = [{ name = "lukadev_0/result", version = "^1.2.1", index = "https://github.com/pesde-pkg/index" }, "peer"]
 unzip = [{ name = "0x5eal/unzip", version = "^0.2.0", index = "https://github.com/pesde-pkg/index", target = "luau" }, "standard"]
+
+[graph."wally#centau/vide@0.4.1 roblox"]
+direct = ["Vide", { wally = "wally#centau/vide", version = "^0.4.1", index = "default" }, "standard"]
+
+[graph."wally#centau/vide@0.4.1 roblox".pkg_ref]
+ref_ty = "wally"
+index_url = "https://github.com/UpliftGames/wally-index"
+
+[graph."wally#evaera/promise@4.0.0 roblox".pkg_ref]
+ref_ty = "wally"
+index_url = "https://github.com/UpliftGames/wally-index"
+
+[graph."wally#littensy/reflex@4.3.1 roblox"]
+direct = ["Reflex", { wally = "wally#littensy/reflex", version = "^4.3.1", index = "default" }, "standard"]
+
+[graph."wally#littensy/reflex@4.3.1 roblox".dependencies]
+Promise = ["wally#evaera/promise@4.0.0 roblox", "standard"]
+
+[graph."wally#littensy/reflex@4.3.1 roblox".pkg_ref]
+ref_ty = "wally"
+index_url = "https://github.com/UpliftGames/wally-index"
+
+[graph."wally#littensy/reflex@4.3.1 roblox".pkg_ref.dependencies]
+Promise = [{ wally = "wally#evaera/promise", version = ">=4.0.0, <5.0.0", index = "https://github.com/UpliftGames/wally-index" }, "standard"]
+
+[graph."wally#littensy/ripple@0.10.2 roblox".pkg_ref]
+ref_ty = "wally"
+index_url = "https://github.com/UpliftGames/wally-index"
+
+[graph."wally#littensy/vide-ripple@0.10.2 roblox"]
+direct = ["Ripple", { wally = "wally#littensy/vide-ripple", version = "^0.10.2", index = "default" }, "standard"]
+
+[graph."wally#littensy/vide-ripple@0.10.2 roblox".dependencies]
+Ripple = ["wally#littensy/ripple@0.10.2 roblox", "standard"]
+Vide = ["wally#centau/vide@0.4.1 roblox", "standard"]
+
+[graph."wally#littensy/vide-ripple@0.10.2 roblox".pkg_ref]
+ref_ty = "wally"
+index_url = "https://github.com/UpliftGames/wally-index"
+
+[graph."wally#littensy/vide-ripple@0.10.2 roblox".pkg_ref.dependencies]
+Ripple = [{ wally = "wally#littensy/ripple", version = ">=0.10.0, <0.11.0", index = "https://github.com/UpliftGames/wally-index" }, "standard"]
+Vide = [{ wally = "wally#centau/vide", version = ">=0.4.0, <0.5.0", index = "https://github.com/UpliftGames/wally-index" }, "standard"]
+
+[graph."wally#maximumadhd/promise-typed@1.0.0 roblox"]
+direct = ["Promise", { wally = "wally#maximumadhd/promise-typed", version = "^1.0.0", index = "default" }, "standard"]
+
+[graph."wally#maximumadhd/promise-typed@1.0.0 roblox".dependencies]
+PromiseBase = ["wally#evaera/promise@4.0.0 roblox", "standard"]
+
+[graph."wally#maximumadhd/promise-typed@1.0.0 roblox".pkg_ref]
+ref_ty = "wally"
+index_url = "https://github.com/UpliftGames/wally-index"
+
+[graph."wally#maximumadhd/promise-typed@1.0.0 roblox".pkg_ref.dependencies]
+PromiseBase = [{ wally = "wally#evaera/promise", version = ">=4.0.0, <5.0.0", index = "https://github.com/UpliftGames/wally-index" }, "standard"]

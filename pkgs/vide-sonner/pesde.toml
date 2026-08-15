@@ -1,14 +1,19 @@
-name = "2b3/vide_sonner_root"
-version = "0.0.0"
+name = "2b3/vide_sonner"
+version = "0.1.7"
 description = "An opinionated toast component for Vide."
 authors = ["2b3"]
 repository = "https://github.com/2b3/vide-sonner"
 license = "MIT"
 
-workspace_members = ["pkgs/*"]
+includes = [
+    "pesde.toml",
+    "src/**/*.luau",
+]
 
 [target]
 environment = "roblox"
+lib = "src/init.luau"
+build_files = ["src"]
 
 [indices]
 default = "https://github.com/pesde-pkg/index"
@@ -19,9 +24,16 @@ default = "https://github.com/UpliftGames/wally-index"
 [scripts]
 roblox_sync_config_generator = ".pesde/scripts/roblox_sync_config_generator.luau"
 sourcemap_generator = ".pesde/scripts/sourcemap_generator.luau"
+dev = "scripts/dev"
 
 [dev_dependencies]
 scripts = { name = "pesde/scripts_rojo", version = "^0.2.0", target = "lune" }
+
+[dependencies]
+Promise = { wally = "maximumadhd/promise-typed", version = "^1.0.0" }
+Ripple = { wally = "littensy/vide-ripple", version = "^0.10.2" }
+Reflex = { wally = "littensy/reflex", version = "^4.3.1" }
+Vide = { version = "^0.4.1", wally = "centau/vide" }
 
 [engines]
 pesde = "^0.7.0"

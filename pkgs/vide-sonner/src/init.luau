@@ -1,16 +1,16 @@
 --- Requires ---
-const Store = require(script.Store)
-const Toaster = require(script.UI.Components.Toaster)
+local Toaster = require(script.UI.Components.Toaster)
+local Store = require(script.Store)
 
 --- Variables ---
-const Toast = {}
+local Toast = {}
 Toast.__index = Toast
 
 --- Methods ---
 Toast.Toaster = Toaster
 
 Toast.__call = function(...)
-	const _, message, data = ...
+	local _, message, data = ...
 	Store.message(message, data)
 end
 
