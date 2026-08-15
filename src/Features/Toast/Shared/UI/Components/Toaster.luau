@@ -1,3 +1,4 @@
+--- Services ---
 const ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 --- Folders ---
@@ -18,14 +19,15 @@ const create = Vide.create
 const chanded = Vide.changed
 const read = Vide.read
 
-const GAP = 8
-
 --- Component ---
-const function Toaster()
-	const heights = source({}) :: Vide.Source<{ [number | string]: number }>
-	const expanded = source(true)
+const function Toaster(props: Types.ToasterProps)
+	--> Default Props <--
+	props.maxVisible = props.maxVisible or 3
+	props.gap = props.gap or 8
 
+	--> Toast State <--
 	const toastStore = source(Store:getState())
+
 	effect(function()
 		return Store:subscribe(function(state)
 			return state
@@ -33,6 +35,10 @@ const function Toaster()
 			toastStore(state)
 		end)
 	end)
+
+	--> Heights <--
+	const heights = source({}) :: Vide.Source<{ [number | string]: number }>
+	const expanded = source(true)
 
 	const function setHeight(id: number | string, height: number)
 		const current = table.clone(read(heights))
@@ -51,7 +57,7 @@ const function Toaster()
 			const height = currentHeights[toasts[i].id]
 
 			if height then
-				offset += height + GAP
+				offset += height + read(props.gap)
 			end
 		end
 
@@ -64,8 +70,9 @@ const function Toaster()
 		Size = UDim2.fromScale(1, 1),
 		BackgroundTransparency = 1,
 
+		--> ToastList <--
 		create("Frame")({
-			Name = "Toasts",
+			Name = "ToastsList",
 
 			BackgroundColor3 = Color3.fromHex("ff8800"),
 			AutomaticSize = Enum.AutomaticSize.XY,
@@ -86,17 +93,17 @@ const function Toaster()
 				expanded(state ~= Enum.GuiState.Idle)
 			end),
 
+			--> Toasts <--
 			values(function()
 				return read(toastStore).toasts
-			end, function(toast: () -> Types.ToastT, index: number)
+			end, function(toast: () -> Types.ToastT, index: () -> number)
 				return Toast({
 					toast = toast,
 					index = index,
 
-					expanded = expanded,
-					maxToasts = 3,
-
+					maxToasts = props.maxVisible,
 					setHeight = setHeight,
+					expanded = expanded,
 
 					offset = function()
 						return getOffset(read(index))

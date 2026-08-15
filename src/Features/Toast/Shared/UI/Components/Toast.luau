@@ -6,20 +6,21 @@ const features = ReplicatedStorage.shared.Features
 const packages = ReplicatedStorage.Packages
 
 --- Requires ---
-const Assets = require(ReplicatedStorage.shared.Features.Toast.Assets)
 const Ripple = require(packages.Ripple)
 const Types = require(features.Toast.Types)
+const Assets = require(features.Toast.Assets)
 const Vide = require(packages.Vide)
 
 --- Variables ---
 const useSpring = Ripple.useSpring
+
 const create = Vide.create
 const effect = Vide.effect
-const changed = Vide.changed
-const show = Vide.show
-const read = Vide.read
 const source = Vide.source
+const show = Vide.show
 const action = Vide.action
+const changed = Vide.changed
+const read = Vide.read
 
 const SWIPE_THRESHOLD = 0.3
 
@@ -72,6 +73,7 @@ const function Toast(props: Types.ToastProps)
 		return (#read(props.toasts) - read(props.index)) < props.maxToasts
 	end
 
+	--> Remove <--
 	const removed = source(false)
 	const function deleteToast()
 		if read(removed) then
@@ -86,6 +88,7 @@ const function Toast(props: Types.ToastProps)
 	end
 	task.delay(TOAST_LIFETIME, deleteToast)
 
+	--> Dragging <--
 	const swiping = source(false)
 	const swipeOut = source(false)
 
@@ -121,6 +124,7 @@ const function Toast(props: Types.ToastProps)
 		deleteToast()
 	end
 
+	--> Icon <--
 	const function getIcon(): index<typeof(Assets), keyof<typeof(Assets)>>?
 		const type = read(props.toast).type
 		const icon = Assets["icons/" .. type] :: index<typeof(Assets), concat<"icons/", Types.ToastType>>?
@@ -131,6 +135,7 @@ const function Toast(props: Types.ToastProps)
 		return icon
 	end
 
+	--> Animations <--
 	const getOffset, offsetSpring = useSpring(0, Ripple.config.stiff)
 	const getScale, scaleSpring = useSpring(0.6, Ripple.config.stiff)
 
@@ -162,9 +167,9 @@ const function Toast(props: Types.ToastProps)
 	end)
 
 	return show(isVisible, function()
-		return create("TextLabel")({
+		return create("Frame")({
 			Name = function()
-				return "Toast " .. read(props.toast).id .. (read(removed) and " Removed" or "")
+				return string.format("Toast %s", tostring(read(props.toast).id))
 			end,
 
 			AutomaticSize = Enum.AutomaticSize.Y,

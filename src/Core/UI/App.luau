@@ -16,8 +16,8 @@ const create = Vide.create
 const function App()
 	return create("ScreenGui")({
 		Toaster({
-			offset = 32,
-			position = "bottom-left",
+			gap = 8,
+			maxVisible = 4,
 		}),
 	})
 end
