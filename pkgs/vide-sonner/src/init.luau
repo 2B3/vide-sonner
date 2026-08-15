@@ -1,7 +1,7 @@
 --- Requires ---
 local Toaster = require(script.UI.Components.Toaster)
 local Store = require(script.Store)
-const Types = require(script.Types)
+local Types = require(script.Types)
 
 --- Types ---
 export type ToastT = Types.ToastT
