@@ -6,3 +6,4 @@
 [tools]
 rogen = "ldgerrits/rogen@1.3.0"
 rojo = "rojo-rbx/rojo@7.7.0"
+tungsten = "pwnwrkz/tungsten@2.1.1"

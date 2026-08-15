@@ -1,0 +1,12 @@
+[creator]
+type = "user"
+id = 1351897093
+
+[codegen]
+style = "flat"
+strip_extension = true
+
+[inputs.assets]
+path = "assets/**/*"
+output_path = "src/Features/Toast/Shared/Assets.luau"
+packable = true

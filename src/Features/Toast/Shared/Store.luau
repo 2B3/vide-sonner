@@ -35,7 +35,7 @@ export type Actions = {
 
 	message: (message: string, data: Types.ToastT) -> (),
 	error: (message: string, data: Types.ToastT) -> (),
-	sucess: (message: string, data: Types.ToastT) -> (),
+	success: (message: string, data: Types.ToastT) -> (),
 	info: (message: string, data: Types.ToastT) -> (),
 	warning: (message: string, data: Types.ToastT) -> (),
 	loading: (message: string, data: Types.ToastT) -> (),

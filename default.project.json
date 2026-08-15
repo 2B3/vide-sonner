@@ -36,25 +36,7 @@
         "Features": {
           "$className": "Folder",
           "Toast": {
-            "$className": "Folder",
-            "Store": {
-              "$path": "src/Features/Toast/Store.luau"
-            },
-            "Types": {
-              "$path": "src/Features/Toast/Types.luau"
-            },
-            "UI": {
-              "$className": "Folder",
-              "Components": {
-                "$className": "Folder",
-                "Toast": {
-                  "$path": "src/Features/Toast/UI/Components/Toast.luau"
-                },
-                "Toaster": {
-                  "$path": "src/Features/Toast/UI/Components/Toaster.luau"
-                }
-              }
-            }
+            "$path": "src/Features/Toast/Shared"
           }
         }
       }

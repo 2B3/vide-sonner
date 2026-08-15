@@ -72,6 +72,8 @@ const function Toaster()
 			Position = UDim2.fromScale(1, 1),
 			BackgroundTransparency = 1,
 			AnchorPoint = Vector2.one,
+			BorderColor3 = Color3.fromHex("ff6600"),
+			BorderSizePixel = 1,
 
 			create("UIPadding")({
 				PaddingBottom = UDim.new(0, 16),

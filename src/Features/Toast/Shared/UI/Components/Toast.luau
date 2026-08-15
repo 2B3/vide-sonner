@@ -1,3 +1,4 @@
+--- Services ---
 const ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 --- Folders ---
@@ -5,6 +6,7 @@ const features = ReplicatedStorage.shared.Features
 const packages = ReplicatedStorage.Packages
 
 --- Requires ---
+const Assets = require(ReplicatedStorage.shared.Features.Toast.Assets)
 const Ripple = require(packages.Ripple)
 const Types = require(features.Toast.Types)
 const Vide = require(packages.Vide)
@@ -119,6 +121,16 @@ const function Toast(props: Types.ToastProps)
 		deleteToast()
 	end
 
+	const function getIcon(): index<typeof(Assets), keyof<typeof(Assets)>>?
+		const type = read(props.toast).type
+		const icon = Assets["icons/" .. type] :: index<typeof(Assets), concat<"icons/", Types.ToastType>>?
+		if not icon then
+			return {}
+		end
+
+		return icon
+	end
+
 	const getOffset, offsetSpring = useSpring(0, Ripple.config.stiff)
 	const getScale, scaleSpring = useSpring(0.6, Ripple.config.stiff)
 
@@ -220,11 +232,6 @@ const function Toast(props: Types.ToastProps)
 					PaddingTop = UDim.new(0, 16),
 				}),
 
-				create("UIListLayout")({
-					HorizontalAlignment = Enum.HorizontalAlignment.Left,
-					Padding = UDim.new(0, 4),
-				}),
-
 				create("UIShadow")({
 					BlurRadius = UDim.new(0, 16),
 					Transparency = 0.8,
@@ -243,39 +250,81 @@ const function Toast(props: Types.ToastProps)
 					CornerRadius = UDim.new(0, 8),
 				}),
 
-				create("TextLabel")({
-					Name = "Title",
-
-					TextXAlignment = Enum.TextXAlignment.Left,
-					AutomaticSize = Enum.AutomaticSize.XY,
-					Text = function()
-						return read(props.toast).title or ""
-					end,
-					BackgroundTransparency = 1,
-					TextSize = 14,
-
-					FontFace = Font.new("rbxasset://fonts/families/Roboto.json", Enum.FontWeight.Medium),
-					TextColor3 = Color3.fromHex("121212"),
-				}),
-
 				show(function()
-					return read(props.toast).description
-				end, function(description: () -> string)
-					return create("TextLabel")({
-						Name = "Description",
+					return read(props.toast).type
+				end, function()
+					return create("ImageLabel")({
+						Name = "Icon",
 
-						TextXAlignment = Enum.TextXAlignment.Left,
-						TextTruncate = Enum.TextTruncate.AtEnd,
-						AutomaticSize = Enum.AutomaticSize.XY,
+						Position = UDim2.fromScale(0, 0.5),
+						AnchorPoint = Vector2.yAxis * 0.5,
+						Size = UDim2.fromOffset(20, 20),
 						BackgroundTransparency = 1,
-						Text = description or "",
-						TextWrapped = true,
-						TextSize = 14,
 
-						FontFace = Font.new("rbxasset://fonts/families/Roboto.json", Enum.FontWeight.Regular),
-						TextColor3 = Color3.fromHex("121212"),
+						Image = function()
+							return getIcon().Image
+						end,
+
+						ImageRectOffset = function()
+							return getIcon().ImageRectOffset
+						end,
+
+						ImageRectSize = function()
+							return getIcon().ImageRectSize
+						end,
 					})
 				end),
+
+				create("Frame")({
+					Name = "TextsContainer",
+
+					AutomaticSize = Enum.AutomaticSize.Y,
+					Position = UDim2.fromScale(1, 0),
+					Size = function()
+						return UDim2.new(1, read(props.toast).type and -25, 0, 0)
+					end,
+					AnchorPoint = Vector2.xAxis,
+					BackgroundTransparency = 1,
+
+					create("UIListLayout")({
+						HorizontalAlignment = Enum.HorizontalAlignment.Left,
+						Padding = UDim.new(0, 4),
+					}),
+
+					create("TextLabel")({
+						Name = "Title",
+
+						TextXAlignment = Enum.TextXAlignment.Left,
+						AutomaticSize = Enum.AutomaticSize.XY,
+						Text = function()
+							return read(props.toast).title or ""
+						end,
+						BackgroundTransparency = 1,
+						TextSize = 14,
+
+						FontFace = Font.new("rbxasset://fonts/families/Roboto.json", Enum.FontWeight.Medium),
+						TextColor3 = Color3.fromHex("121212"),
+					}),
+
+					show(function()
+						return read(props.toast).description
+					end, function(description: () -> string)
+						return create("TextLabel")({
+							Name = "Description",
+
+							TextXAlignment = Enum.TextXAlignment.Left,
+							TextTruncate = Enum.TextTruncate.AtEnd,
+							AutomaticSize = Enum.AutomaticSize.XY,
+							BackgroundTransparency = 1,
+							Text = description or "",
+							TextWrapped = true,
+							TextSize = 14,
+
+							FontFace = Font.new("rbxasset://fonts/families/Roboto.json", Enum.FontWeight.Regular),
+							TextColor3 = Color3.fromHex("121212"),
+						})
+					end),
+				}),
 			}),
 		})
 	end)
