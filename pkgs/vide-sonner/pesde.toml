@@ -1,5 +1,5 @@
 name = "2b3/vide_sonner"
-version = "0.2.0"
+version = "0.2.1"
 description = "An opinionated toast component for Vide."
 authors = ["2b3"]
 repository = "https://github.com/2b3/vide-sonner"
