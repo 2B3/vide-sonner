@@ -66,6 +66,7 @@ const function Toaster(props: Types.ToasterProps)
 
 		Size = UDim2.fromScale(1, 1),
 		BackgroundTransparency = 1,
+		ZIndex = 1050,
 
 		--> ToastList <--
 		create("Frame")({
